@@ -24,9 +24,15 @@ export default function useOrder(){
         return quantity * price
     }
 
+    const removeFromOrder=(id : MenuItem["id"])=>{
+        const updateOrder = order.filter (item => item.id !==id)
+        setOrder(updateOrder)
+    }
+
     return{
         order,
         addItem,
         subTotal,
+        removeFromOrder,
     }
 }

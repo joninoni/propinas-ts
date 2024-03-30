@@ -6,7 +6,7 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-	const {order,addItem,subTotal} = useOrder()
+	const {order,addItem,subTotal,removeFromOrder} = useOrder()
 
 	return (
 		<>
@@ -32,6 +32,7 @@ function App() {
 					<OrderContents
 						order={order}
 						subTotal={subTotal}
+						removeFromOrder={removeFromOrder}
 					/>		
 				</div>
 			</main>
