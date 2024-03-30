@@ -7,7 +7,7 @@ export default function useOrder(){
     const addItem = (item : MenuItem) => {
         //verifica si existe
         const existItem = order.find( orderItem => orderItem.id === item.id)
-
+    
         if(existItem){
             const updateOrder = order.map( orderItem => orderItem.id === item.id ? {...orderItem,quantity:orderItem.quantity + 1} : orderItem)
             setOrder(updateOrder)
@@ -19,7 +19,14 @@ export default function useOrder(){
         
       
     }
+
+    const subTotal=(quantity: number ,price: number)=>{
+        return quantity * price
+    }
+
     return{
-        addItem
+        order,
+        addItem,
+        subTotal,
     }
 }
