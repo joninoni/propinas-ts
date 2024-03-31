@@ -1,10 +1,12 @@
-type TipPercentageFormProps = {
+import type {Dispatch,SetStateAction} from "react"
+
+type TipPercentageForm= {
     id: string
     value: number
     label: string
 }
 
-const tipOptions : TipPercentageFormProps[] = [
+const tipOptions : TipPercentageForm[] = [
     {
       id: 'tip-10',
       value: .10,
@@ -22,7 +24,11 @@ const tipOptions : TipPercentageFormProps[] = [
     },
   ]
 
-const TipPercentageForm = () => {
+type TipPercentageFormProps = {
+    setTip: Dispatch<SetStateAction<number>>
+}
+
+const TipPercentageForm = ( {setTip} : TipPercentageFormProps) => {
     return (
         <div>
             <h3 className="font-black text-2xl">Propina</h3>
@@ -38,6 +44,7 @@ const TipPercentageForm = () => {
                             id={tip.id}
                             name="tip"
                             value={tip.value}
+                            onChange={ e => setTip(+ e.target.value)}
                         />
                     </div>
                 ))}

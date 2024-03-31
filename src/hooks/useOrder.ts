@@ -3,6 +3,7 @@ import { MenuItem, OrderItem } from "../types"
 
 export default function useOrder(){
     const [order,setOrder] = useState<OrderItem[]>([])//el arreglo de la orden
+    const [tip,setTip] = useState(0)//la propina
 
     const addItem = (item : MenuItem) => {
         //verifica si existe
@@ -31,11 +32,16 @@ export default function useOrder(){
 
     const subTotalAmount = useMemo( ()=> order.reduce( (total : number,item : OrderItem) => total + (item.price * item.quantity) ,0),[order])
 
+    const tipAmount = useMemo( () => subTotalAmount * tip,[tip,order])
+
     return{
         order,
+        tip,
+        setTip,
         addItem,
         subTotal,
         removeFromOrder,
         subTotalAmount,
+        tipAmount,
     }
 }
