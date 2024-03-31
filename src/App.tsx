@@ -7,7 +7,7 @@ import useOrder from "./hooks/useOrder"
 
 function App() {
 
-	const {order,addItem,subTotal,removeFromOrder} = useOrder()
+	const {order,addItem,subTotal,removeFromOrder,subTotalAmount} = useOrder()
 
 	return (
 		<>
@@ -38,7 +38,7 @@ function App() {
 					/>	
 
 					<OrderTotals
-						order={order}
+						subTotalAmount={subTotalAmount}
 					/>	
 				</div>
 			</main>
