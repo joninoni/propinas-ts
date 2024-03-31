@@ -34,6 +34,13 @@ export default function useOrder(){
 
     const tipAmount = useMemo( () => subTotalAmount * tip,[tip,order])
 
+    const totalAmount = useMemo( () => subTotalAmount + tipAmount ,[tip,order] )
+
+    const placeOrder = () => {
+        setOrder([])
+        setTip(0)
+    }
+
     return{
         order,
         tip,
@@ -43,5 +50,7 @@ export default function useOrder(){
         removeFromOrder,
         subTotalAmount,
         tipAmount,
+        totalAmount,
+        placeOrder,
     }
 }

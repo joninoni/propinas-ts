@@ -3,11 +3,13 @@ import { formatCurrency } from "../helpers"
 type OrderTotalsProps = {
     subTotalAmount : number
     tipAmount: number
+    totalAmount: number
+    placeOrder: () => void
 }
 
 
-const OrderTotals = ({subTotalAmount,tipAmount} : OrderTotalsProps) => {
-    
+const OrderTotals = ({subTotalAmount,tipAmount,totalAmount,placeOrder} : OrderTotalsProps) => {
+
     return (
         <>
             <div className=" space-y-3">
@@ -22,9 +24,16 @@ const OrderTotals = ({subTotalAmount,tipAmount} : OrderTotalsProps) => {
                 </p>
 
                 <p>Total a pagar {""}
-                    <span className="font-bold">$0</span>
+                    <span className="font-bold">{formatCurrency(totalAmount)}</span>
                 </p>
             </div>
+
+            <button
+                className=" w-full bg-black uppercase mt-10 text-white p-3 font-bold"
+                onClick={placeOrder}
+            >
+                  Guardar Orden
+            </button>
         </>
     )
 }
