@@ -36,10 +36,12 @@ function App() {
 						subTotal={subTotal}
 						removeFromOrder={removeFromOrder}
 					/>	
-
-					<OrderTotals
-						subTotalAmount={subTotalAmount}
-					/>	
+					{order.length >0 &&
+						<OrderTotals
+							subTotalAmount={subTotalAmount}
+					/>
+					}
+						
 				</div>
 			</main>
 		</>
